@@ -10,7 +10,6 @@ def load_data(path):
     return df
 
 def clean_data(df):
-    # Xóa giá trị NA, hoặc fill nếu cần
     df = df.dropna()
     return df
 

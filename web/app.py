@@ -43,7 +43,6 @@ def list_available_models(models_dir):
     if not os.path.exists(models_dir):
         return {}
     files = [f for f in os.listdir(models_dir) if f.startswith("model_") and f.endswith(".pkl")]
-    # map: "Linear" -> "/.../models/model_Linear.pkl"
     mapping = {}
     for f in files:
         name = f.replace("model_", "").replace(".pkl", "")

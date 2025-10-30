@@ -23,7 +23,7 @@ print(f"Train set: {X_train.shape}, Test set: {X_test.shape}")
 # BUILD PREPROCESSOR
 
 print("Building preprocessor...")
-preprocessor = build_preprocessor(X_train)
+preprocessor = build_preprocessor()
 print("Preprocessor ready!")
 
 # TRAIN MODELS
@@ -54,7 +54,6 @@ for name, mdl in models.items():
     joblib.dump(mdl, out_path)
     print(f"Saved: {out_path}")
 
-# (tùy chọn) vẫn lưu best model ở gốc để tương thích cũ
 best_model_name = comparison_df.loc[comparison_df['R2'].idxmax(), 'Model']
 best_model = models[best_model_name]
 joblib.dump(best_model, os.path.join(os.path.dirname(__file__), '..', f"model_{best_model_name}.pkl"))

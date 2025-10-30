@@ -1,16 +1,30 @@
 # FEATURE ENGINEERING MODULE
 # Tạo biến mới, mã hóa, chuẩn hóa
 
+from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
-def build_preprocessor(X):
-    num_cols = X.select_dtypes(include=['int64','float64']).columns.tolist()
-    cat_cols = X.select_dtypes(exclude=['int64','float64']).columns.tolist()
+def build_preprocessor():
+    num_cols = ['Sales','Quantity','Discount']
+    cat_cols = ['Ship Mode','Segment','Region','Category','Sub-Category']
 
-    preprocessor = ColumnTransformer([
-        ('num', StandardScaler(), num_cols),
-        ('cat', OneHotEncoder(handle_unknown='ignore'), cat_cols)
+    numeric_tf = Pipeline(steps=[
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler())
     ])
+
+    categorical_tf = Pipeline(steps=[
+        ("imputer", SimpleImputer(strategy="most_frequent")),
+        ("ohe", OneHotEncoder(handle_unknown="ignore"))
+    ])
+
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ("num", numeric_tf, num_cols),
+            ("cat", categorical_tf, cat_cols)
+        ],
+        remainder="drop"
+    )
     return preprocessor
