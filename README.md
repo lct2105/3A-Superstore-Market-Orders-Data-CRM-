@@ -84,7 +84,7 @@ Các mô hình được huấn luyện:
 
 ---
 
-## 📈 Kết luận
+## Kết luận
 - Dự án đã xây dựng được quy trình **tiền xử lý → huấn luyện → đánh giá → triển khai web**.  
 - Dashboard trực quan, dễ sử dụng, đáp ứng yêu cầu của giảng viên về phần “ứng dụng web ML”.  
 - Mô hình **XGBoost** cho kết quả tốt nhất (R² ≈ 0.98).
