@@ -83,9 +83,6 @@ with st.sidebar:
     st.markdown("### Cài đặt hiển thị")
     sample_n = st.slider("Số dòng mẫu cho biểu đồ (giảm lag)", 500, 5000, 3000, 500)
     show_raw = st.checkbox("Hiển thị preview dữ liệu (50 dòng)", value=True)
-    st.markdown("---")
-    st.markdown("**Cách chạy:**")
-    st.code("streamlit run web/app.py", language="bash")
 
 # Tabs
 tab_data, tab_eda, tab_pred = st.tabs(["DATA", "TỔNG QUAN DỮ LIỆU", "DỰ ĐOÁN"])
